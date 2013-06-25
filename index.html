@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/angular-1.1.4.js"></script>
         <script type="text/javascript" src="js/hammer.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/directives/on_tap_directive.js"></script>
         <script type="text/javascript" src="js/services/xbmc_settings.js"></script>
         <script type="text/javascript" src="js/services/xbmc_remote.js"></script>
         <script type="text/javascript" src="js/controllers/tabs_controller.js"></script>
@@ -23,8 +24,8 @@
     <body ng-app="xbmcmagick">
         <div class="tabs" ng-controller="TabsController">
             <div class="tab-header">
-                <div ng-class="{'active': currentTab == 0}" ng-click="currentTab = 0">Input</div>
-                <div ng-class="{'active': currentTab == 1}" ng-click="currentTab = 1">Settings</div>
+                <div ng-class="{'active': currentTab == 0}" on-tap="currentTab = 0">Input</div>
+                <div ng-class="{'active': currentTab == 1}" on-tap="currentTab = 1">Settings</div>
             </div>
             <div data-ng-switch="currentTab" ng-animate="'slide'">
                 <div class="first tab" ng-switch-when="0">

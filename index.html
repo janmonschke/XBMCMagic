@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/fontello.css" />
+        <link rel="stylesheet" type="text/css" href="css/master.css" />
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/angular-1.1.4.js"></script>
+        <script type="text/javascript" src="js/hammer.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/services/xbmc_settings.js"></script>
+        <script type="text/javascript" src="js/services/xbmc_remote.js"></script>
+        <script type="text/javascript" src="js/controllers/tabs_controller.js"></script>
+        <script type="text/javascript" src="js/controllers/commands_controller.js"></script>
+        <script type="text/javascript" src="js/controllers/gesture_controller.js"></script>
+        <script type="text/javascript" src="js/controllers/settings_controller.js"></script>
+
+        <title>Hello World</title>
+    </head>
+    <body ng-app="xbmcmagick">
+        <div class="tabs" ng-controller="TabsController">
+            <div class="tab-header">
+                <div ng-class="{'active': currentTab == 0}" ng-click="currentTab = 0">Input</div>
+                <div ng-class="{'active': currentTab == 1}" ng-click="currentTab = 1">Settings</div>
+            </div>
+            <div data-ng-switch="currentTab" ng-animate="'slide'">
+                <div class="first tab" ng-switch-when="0">
+                    <div ng-controller="GestureController" id="gesture-target">
+                        <i class="icon-left" id="letter"></i>
+                    </div>
+                    <div ng-controller="CommandsController" id="commands">
+                        <div class="wrapper">
+                            <i class="icon-play" ng-click="play()"></i>
+                            <i class="icon-pause" ng-click="pause()"></i>
+                            <i class="icon-stop" ng-click="info()"></i>
+                            <i class="icon-to-start-alt" ng-click="toStart()"></i>
+                            <i class="icon-to-end-alt" ng-click="toEnd()"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="second tab" ng-switch-when="1">
+                    <div id="settings-form" ng-controller="SettingsController">
+                        <p>Add your XBMC details here. Also make sure to enable the HTTP API in the settings screen of your device.</p>
+                        <form>
+                            <input type="text" ng-model="settings.address" placeholder="XBMC address (IP/domain)" />
+                            <input type="text" ng-model="settings.port" placeholder="Port (default: 8080)" />
+                            <input type="text" ng-model="settings.username" placeholder="XBMC username (if set)" />
+                            <input type="text" ng-model="settings.password" placeholder="XBMC password (if set)" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

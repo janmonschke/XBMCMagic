@@ -1,0 +1,1 @@
+xbmcmagick = angular.module 'xbmcmagick', []

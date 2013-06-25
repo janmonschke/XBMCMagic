@@ -21,4 +21,6 @@
 
     <preference name="permissions" value="none"/>
 
+    <preference name="splash-screen-duration" value="2000" />
+
 </widget>

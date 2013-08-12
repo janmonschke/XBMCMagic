@@ -25,32 +25,30 @@ html, body {
   height: 30%;
   width: 50%;
   margin: -15% 0 0 -25%;
-  opacity: 0;
   text-align: center;
-  font-size: 30px;
-  z-index: -1;*/
-  display: none;
+  font-size: 120px;
+  z-index: -1;
+  opacity: 0;
 }
 
-#letter.grow {
-  -webkit-animation-duration: .3s;
-  -webkit-animation-name: growing;
+#letter.glow {
+  -webkit-animation-duration: 3s;
+  -webkit-animation-name: glowing;
   display: block;
 }
  
-@-webkit-keyframes growing {
+@-webkit-keyframes glowing {
   from {
-    margin-top: 0;
-    font-size: 0;
+    opacity: 0;
+  }
+
+  50% {
     opacity: 1;
   }
 
   to {
-    margin-top: -150px;
-    font-size: 150px;
     opacity: 0;
   }
-
 }
 
 #commands {

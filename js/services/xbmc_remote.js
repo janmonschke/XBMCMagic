@@ -20,8 +20,9 @@ xbmcmagick.factory('xbmcRemote', function($http, xbmcSettings, $rootScope) {
     port = settings.port;
     url = "" + protocol + "://" + auth + address + ":" + port + "/jsonrpc";
     data = {
-      "jsonrpc": "2.0",
-      "method": action
+      jsonrpc: "2.0",
+      method: action,
+      id: 1
     };
     angular.extend(data, extra);
     console.log("action -> " + action);
@@ -32,7 +33,7 @@ xbmcmagick.factory('xbmcRemote', function($http, xbmcSettings, $rootScope) {
       method: 'POST',
       dataType: 'json',
       headers: {
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json;charset=UTF-8'
       }
     });
     req.done(function(a) {
@@ -68,12 +69,12 @@ xbmcmagick.factory('xbmcRemote', function($http, xbmcSettings, $rootScope) {
   };
   play = function() {
     return sendAction('Player.PlayPause', {
-      "Player.Id": 0
+      params: [1]
     });
   };
   pause = function() {
     return sendAction('Player.PlayPause', {
-      "Player.Id": 0
+      params: [1]
     });
   };
   info = function() {

@@ -10,7 +10,7 @@ xbmcmagick.factory 'xbmcRemote', ($http, xbmcSettings, $rootScope) ->
 
     url = "#{protocol}://#{auth}#{address}:#{port}/jsonrpc"
     
-    data = {"jsonrpc": "2.0", "method": action}
+    data = {jsonrpc: "2.0", method: action, id: 1}
 
     angular.extend data, extra
     console.log "action -> #{action}"
@@ -22,7 +22,7 @@ xbmcmagick.factory 'xbmcRemote', ($http, xbmcSettings, $rootScope) ->
       method: 'POST'
       dataType: 'json'
       headers:
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json;charset=UTF-8'
 
     req.done (a) -> 
       console.log 'done'
@@ -44,8 +44,8 @@ xbmcmagick.factory 'xbmcRemote', ($http, xbmcSettings, $rootScope) ->
     sendAction 'Input.ContextMenu'
 
   # Player methods
-  play = -> sendAction 'Player.PlayPause', "Player.Id": 0
-  pause = -> sendAction 'Player.PlayPause', "Player.Id": 0
+  play = -> sendAction 'Player.PlayPause', params: [1]
+  pause = -> sendAction 'Player.PlayPause', params: [1]
   info = -> sendAction 'Player.GetActivePlayer'
 
   return {
